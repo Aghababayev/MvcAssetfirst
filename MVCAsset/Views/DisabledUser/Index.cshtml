@@ -1,0 +1,64 @@
+﻿@using MVCAsset.Models.Classes
+@model List<Employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container-fluid" style="background-color: #fbc531">
+    <h4 style="text-align:center">DISABLED EMPLOYEE </h4>
+</div>
+
+<table id="tbl1" class="table table-bordered" style="table-layout:fixed; text-align:center">
+
+    <thead>
+        <tr style="text-align:center">
+
+            <th>Name</th>
+            <th>Surname</th>
+            <th>ASL</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Recover </th>
+            <th>Delete</th>
+            @*<th>Detalis</th>*@
+        </tr>
+    </thead>
+    @foreach (var emp in Model)
+    {
+        <tr>
+            <td>@emp.Name</td>
+            <td>@emp.Surname</td>
+            <td>@emp.ASL</td>
+            <td>@emp.Position</td>
+            <td>@emp.Department.DepName</td>
+
+
+            <td><a href="/DisabledUser/Recover/@emp.EmployeeID" class="btn btn-success" style="width:100%">Recover </a></td>
+            <td><a href="/DisabledUser/Delete/@emp.EmployeeID" class="btn btn-danger" style="width:100%">Delete </a></td>
+            @*<td><a href="/Employee/Detalis/@emp.EmployeeID" class="btn btn-info" style="  width:100%">Delails</a></td>*@
+        </tr>
+
+    }
+
+</table>
+
+<a href="/DisabledDevice/Index" style="margin-top:5px; width: 25% " class="align-self-lg-center   btn btn-warning">DISABLED DEVICES </a>
+<a href="/Employee/Index" style="margin-top:15px; width:25%" class="align-self-lg-center   btn btn-info">BACK </a>
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<link href="~/Content/DataTables/css/dataTables.material.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').dataTable();
+</script>

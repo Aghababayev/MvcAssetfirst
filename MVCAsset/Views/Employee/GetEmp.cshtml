@@ -1,0 +1,49 @@
+﻿@model MVCAsset.Models.Classes.Employee
+@{
+    ViewBag.Title = "GetEmp";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<div style="width:100%; " class="container-fluid">
+    <div style="width:65%;float:right">
+<img style="width:100%;height:100%" src="~/Images/personel.jpg" /> </div>
+    @using (Html.BeginForm("Update", "Employee", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.EmployeeID);
+        @Html.Label("NAME ")
+        <br />
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control col-md-4", required = "", maxlength = "20" });
+        <br />
+        @Html.Label("SURNAME ")
+        <br />
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control col-md-4", required = "", maxlength = "30" });
+        <br />
+        @Html.Label("ASL ")
+        <br />
+
+        @Html.TextBoxFor(x => x.ASL, new { @class = "form-control col-md-4", onkeyup = "InputToUpper(this);", required = "", maxlength = "10" });
+        <br />
+        @Html.Label("POSITION ")
+        <br />
+        @Html.TextBoxFor(x => x.Position, new { @class = "form-control col-md-4", required = "", maxlength = "30" });
+        <br />
+        @Html.Label("DEPARTMENT ")
+        <br />
+        @Html.DropDownListFor(x => x.DepartmentID, (List<SelectListItem>)ViewBag.val, "---Select Department---", new { @class = "form-control col-md-4" });
+
+        <br />
+        <button class="btn btn-success">Update</button> <a href="/Employee/Index" class="btn btn-info" style="margin-left:1%">Back</a>
+    }
+
+</div>
+<script>
+function InputToUpper(obj)
+{
+    if (obj.value!="")
+    {
+    obj.value = obj.value.toUpperCase();
+    }
+}
+</script>

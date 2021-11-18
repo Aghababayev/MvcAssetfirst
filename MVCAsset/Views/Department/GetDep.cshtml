@@ -1,0 +1,25 @@
+﻿@model MVCAsset.Models.Classes.Department
+@{
+    ViewBag.Title = "GetDep";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Update", "Department", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.DepartmentID);
+        @Html.Label("DEPARTMENT");
+        @Html.TextBoxFor(x => x.DepName, new { @class = "form-control col-md-4", required = "",maxlength="30" });
+ 
+
+        <br />
+
+        <button id="btnup" class="btn btn-success">UPDATE</button>
+    <a style="margin-left:1%" href="/Department/Index" class="btn btn-info">BACK</a>
+    }
+</div>
+
+<br />
+
+
