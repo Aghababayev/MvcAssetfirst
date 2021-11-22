@@ -16,14 +16,16 @@ namespace MVCAsset.Controllers
             var val = c.Devices.Where(x => x.DevExist == false && x.DeviceID!=0).ToList();
             return View(val);
         }
+        [Authorize(Roles ="A")]
         public ActionResult Delete(int id)
         {
             var val = c.Devices.Find(id);
             c.Devices.Remove(val);
             c.SaveChanges();
             return RedirectToAction("Index");
-        
+
         }
+       
         public ActionResult Recover(int id) 
         {
             var val = c.Devices.Find(id);

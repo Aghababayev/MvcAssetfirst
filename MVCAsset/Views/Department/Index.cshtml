@@ -1,11 +1,11 @@
 ﻿@using MVCAsset.Models.Classes
 @model List<Department>
 
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+
 <div class="container-fluid" style="background-color: #a29bfe">
     <h4 style="text-align:center">DEPARTMENT</h4>
 </div>
@@ -16,9 +16,18 @@
 
             <th>Department ID</th>
             <th>Department Name</th>
-            <th>Delete</th>
-            <th>Update</th>
+            @if (User.IsInRole("A"))
+            {
+                <th>Delete</th>
+            }
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <th>Update</th>
+            }
+
             <th>Details </th>
+
+
         </tr>
     </thead>
     @foreach (var dep in Model)
@@ -26,19 +35,34 @@
         <tr>
             <td>@dep.DepartmentID</td>
             <td>@dep.DepName</td>
-            <td><a href="/Department/Disable/@dep.DepartmentID" class="btn btn-danger" style="width:100%">Delete </a></td>
-            <td><a href="/Department/GetDep/@dep.DepartmentID" class="btn btn-success" style="width:100%">Update </a></td>
+            @if (User.IsInRole("A"))
+            {
+                @*<td><a href="/Department/Delete/@dep.DepartmentID" class="btn btn-danger" style="width:100%">Delete </a></td>*@
+                <td>@Html.ActionLink("Delete", "Delete", new {id= dep.DepartmentID }, new { @class = "btn btn-danger", style = "width:100%", onclick = "return confirm('Do you want DELETE? ')" })</td>
+            }
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <td><a href="/Department/GetDep/@dep.DepartmentID" class="btn btn-success" style="width:100%">Update </a></td>
+            }
+
+
             <td><a href="/Department/Detalis/@dep.DepartmentID" class="btn btn-info" style=" width:100%">Delails</a></td>
+
+
         </tr>
 
     }
 
 </table>
+@if (User.IsInRole("A") || User.IsInRole("B"))
+{
+    <a id="btn1" href="/Department/Add" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-warning">ADD </a>
+}
 
-<a href="/Department/Add" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-warning">ADD </a>
 
 
-@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 

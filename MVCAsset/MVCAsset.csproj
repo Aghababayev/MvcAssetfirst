@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\DisabledDeviceController.cs" />
@@ -153,6 +154,11 @@
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contact\bright-contact-form\assets\css\font-awesome.css" />
+    <Content Include="Contact\bright-contact-form\assets\css\style.css" />
+    <Content Include="Contact\bright-contact-form\assets\images\c11-bg.jpg" />
+    <Content Include="Contact\bright-contact-form\index.html" />
+    <Content Include="Contact\bright-contact-form\starter-license-W3Layouts.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -325,6 +331,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Departadd.jpg" />
+    <Content Include="Images\Depupdate.png" />
+    <Content Include="Images\devicesadd.jpg" />
+    <Content Include="Images\devupdate.jpg" />
+    <Content Include="Images\Handover.jpg" />
     <Content Include="Images\Job-Interview-Illustration.jpg" />
     <Content Include="Images\personel.jpg" />
     <Content Include="Login\web\css\style.css" />
@@ -454,6 +465,11 @@
     <Content Include="Error\fonts\fontawesome-webfont.woff" />
     <Content Include="Error\fonts\fontawesome-webfont.woff2" />
     <Content Include="Error\fonts\FontAwesome.otf" />
+    <Content Include="Contact\bright-contact-form\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Contact\bright-contact-form\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Contact\bright-contact-form\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Contact\bright-contact-form\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Contact\bright-contact-form\assets\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -474,11 +490,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Web\.browserslistrc" />
     <Content Include="Web\.gitignore" />
@@ -547,6 +559,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\GetUser.cshtml" />
     <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

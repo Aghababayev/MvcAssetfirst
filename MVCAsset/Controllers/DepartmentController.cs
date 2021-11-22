@@ -7,7 +7,7 @@ using MVCAsset.Models.Classes;
 
 namespace MVCAsset.Controllers
 {
-    [Authorize(Roles ="A")]
+    
     public class DepartmentController : Controller
     {
         // GET: Department
@@ -20,12 +20,14 @@ namespace MVCAsset.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "A,B")]
         public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
+   
         public ActionResult Add(Department p)
         {
             var val = c.Departments.FirstOrDefault(x => x.DepName == p.DepName);
@@ -46,7 +48,8 @@ namespace MVCAsset.Controllers
 
 
         }
-        public ActionResult Disable(int id)
+        [Authorize(Roles = "A")]
+        public ActionResult Delete(int id)
         {
 
             var val = c.Departments.Find(id);
@@ -58,6 +61,7 @@ namespace MVCAsset.Controllers
             return RedirectToAction("Index");
 
         }
+        [Authorize(Roles ="A,B")]
         public ActionResult GetDep(int id)
         {
             var dep = c.Departments.Find(id);

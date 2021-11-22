@@ -18,30 +18,49 @@
             <th>Device Name</th>
             <th>Product Number</th>
             <th>Description</th>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <th>Recover</th>
 
-            <th>Disable</th>
-            <th>Update</th>
+            }
+
+            @if (User.IsInRole("A"))
+            {
+                <th>Delete</th>
+            }
+
+
             @*<th>Details </th>*@
         </tr>
     </thead>
     @foreach (var dev in Model)
     {
-        <tr>
-            <td>@dev.DeviceID</td>
-            <td>@dev.DevName</td>
-            <td>@dev.SerialNumber</td>
-            <td>@dev.Description</td>
-            <td><a href="/DisabledDevice/Recover/@dev.DeviceID" class="btn btn-success" style="width:100%">Recover</a></td>
-            <td><a href="/DisabledDevice/Delete/@dev.DeviceID" class="btn btn-danger" style="width:100%">Delete</a></td>
-            @*<td><a href="/Device/Detalis/@dev.DeviceID" class="btn btn-info" style=" width:100%">Delails</a></td>*@
-        </tr>
+<tr>
+    <td>@dev.DeviceID</td>
+    <td>@dev.DevName</td>
+    <td>@dev.SerialNumber</td>
+    <td>@dev.Description</td>
+    @if (User.IsInRole("A") || User.IsInRole("B"))
+    {
+        <td><a href="/DisabledDevice/Recover/@dev.DeviceID" class="btn btn-success" style="width:100%">Recover</a></td>
+
+    }
+
+    @if (User.IsInRole("A"))
+    {
+        @*<td><a href="/DisabledDevice/Delete/@dev.DeviceID" class="btn btn-danger" style="width:100%">Delete</a></td>*@
+        <td>@Html.ActionLink("Delete", "Delete", new { id = dev.DeviceID}, new { @class = "btn btn-danger", style = "width:100%", onclick = "return confirm('Do you want DELETE? ')" })</td>
+    }
+
+    @*<td><a href="/Device/Detalis/@dev.DeviceID" class="btn btn-info" style=" width:100%">Delails</a></td>*@
+</tr>
 
     }
 
 </table>
 
 <a href="/DisabledUser/Index" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-warning">DISABLED EMPLOYEES </a>
-<a href="/Device/Index" style="margin-top:15px; width:25%" class="align-self-lg-center   btn btn-info">BaACK </a>
+<a href="/Device/Index" style="margin-top:15px; width:25%" class="align-self-lg-center   btn btn-info">BACK </a>
 
 
 @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@

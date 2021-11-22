@@ -36,7 +36,7 @@
 
     <div class="container-fluid">
         <a href="/Handover/Index" style="margin-left:35%; width: 25% " class="   btn btn-success">Main page</a>
-        <table id="example" class="table table-hover table-bordered dt-responsive nowrap" style="width:100%">
+        <table id="example" class="table table-bordered" >
 
 
 
@@ -50,8 +50,11 @@
 
                     <th>Serial Number</th>
 
+
+
                     @*<th>Description</th>*@
                     <th>Date</th>
+                    <th>Signature   </th>
 
                 </tr>
 
@@ -73,6 +76,7 @@
                         <td>@x.SerialNumber</td>
                         @*<td>@x.Description</td>*@  
                         <td>@x.Time.ToString("yyyy.MM.dd")</td>
+                        <td ></td>
 
                     </tr>
 

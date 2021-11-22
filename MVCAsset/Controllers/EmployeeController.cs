@@ -30,6 +30,7 @@ namespace MVCAsset.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "A,B")]
         public ActionResult Add()
         {
             List<SelectListItem> val = (from i in c.Departments.Where(x=>x.DepExisist==true).ToList()
@@ -75,7 +76,7 @@ namespace MVCAsset.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "A,B")]
         public ActionResult GetEmp(int id)
         {
             List<SelectListItem> value = (from i in c.Departments.ToList()

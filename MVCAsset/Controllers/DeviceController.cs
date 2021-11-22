@@ -19,6 +19,7 @@ namespace MVCAsset.Controllers
             return View(val);
         }
         [HttpGet]
+        [Authorize(Roles = "A,B")]
         public ActionResult Add()
         {
             return View();
@@ -58,6 +59,7 @@ namespace MVCAsset.Controllers
 
             return RedirectToAction("index");
         }
+        [Authorize(Roles = "A,B")]
         public ActionResult GetDev(int id)
         {
             var val = c.Devices.Find(id);

@@ -22,6 +22,7 @@ namespace MVCAsset.Controllers
             return View(val);
         }
         [HttpGet]
+        [Authorize(Roles = "A,B")]
         public ActionResult Add()
         {
             List<SelectListItem> empns = (from i in c.Employees.Where(i => i.EmpExsist == true).ToList()
@@ -90,6 +91,7 @@ namespace MVCAsset.Controllers
 
             return RedirectToAction("Index");
         }
+        [Authorize(Roles ="A")]
         public ActionResult Delete(int id)
         {
             var hnd = c.Handovers.Find(id);

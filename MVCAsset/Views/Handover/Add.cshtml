@@ -4,15 +4,17 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-
-<div class="container-fluid ">
+<div style="width:100%; " class="container-fluid">
+    <div style="width:50%;float:right">
+        <img style="width:90%;height:90%;" src="~/Images/Handover.jpg" />
+    </div>
     @using (Html.BeginForm("Add", "Handover", FormMethod.Post))
     {
 
 
         @Html.Label("Name")
 
-        @Html.DropDownListFor(x => x.EmployeeID, (List<SelectListItem>)ViewBag.ns, "---Select Employee---", new { @class = "form-control col-md-4", @required="sefsef"})
+        @Html.DropDownListFor(x => x.EmployeeID, (List<SelectListItem>)ViewBag.ns, "---Select Employee---", new { @class = "form-control col-md-4", @required = "sefsef" })
 
         <br />
         @Html.Label("Device")
@@ -28,7 +30,7 @@
 
         @Html.Label("Date")
         <br />
-        @Html.TextBoxFor(x=>x.Time, new { @class = "form-control col-md-3" ,type="date", @required="" })
+        @Html.TextBoxFor(x => x.Time, new { @class = "form-control col-md-3", type = "date", @required = "" })
         <br />
         <br />
 

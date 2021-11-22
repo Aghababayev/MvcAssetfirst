@@ -16,6 +16,7 @@ namespace MVCAsset.Controllers
             var val = c.Employees.Where(x => x.EmpExsist == false && x.EmployeeID!=0).ToList();
             return View(val);
         }
+        [Authorize(Roles = "A")]
         public ActionResult Delete(int id)
         {
             var val = c.Employees.Find(id);

@@ -19,25 +19,42 @@
             <th>ASL</th>
             <th>Position</th>
             <th>Department</th>
-            <th>Recover </th>
-            <th>Delete</th>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <th>Recover </th>
+
+            }
+            @if (User.IsInRole("A"))
+            {
+                <th>Delete</th>
+            }
+
             @*<th>Detalis</th>*@
         </tr>
     </thead>
     @foreach (var emp in Model)
     {
-        <tr>
-            <td>@emp.Name</td>
-            <td>@emp.Surname</td>
-            <td>@emp.ASL</td>
-            <td>@emp.Position</td>
-            <td>@emp.Department.DepName</td>
+<tr>
+    <td>@emp.Name</td>
+    <td>@emp.Surname</td>
+    <td>@emp.ASL</td>
+    <td>@emp.Position</td>
+    <td>@emp.Department.DepName</td>
 
+    @if (User.IsInRole("A") || User.IsInRole("B"))
+    {
+        <td><a href="/DisabledUser/Recover/@emp.EmployeeID" class="btn btn-success" style="width:100%">Recover </a></td>
 
-            <td><a href="/DisabledUser/Recover/@emp.EmployeeID" class="btn btn-success" style="width:100%">Recover </a></td>
-            <td><a href="/DisabledUser/Delete/@emp.EmployeeID" class="btn btn-danger" style="width:100%">Delete </a></td>
-            @*<td><a href="/Employee/Detalis/@emp.EmployeeID" class="btn btn-info" style="  width:100%">Delails</a></td>*@
-        </tr>
+    }
+    @if (User.IsInRole("A"))
+    {
+        @*<td><a href="/DisabledUser/Delete/@emp.EmployeeID" class="btn btn-danger" style="width:100%">Delete </a></td>*@
+        <td>@Html.ActionLink("Delete", "Delete", new { id = emp.EmployeeID }, new { @class = "btn btn-danger", style = "width:100%", onclick = "return confirm('Do you want DELETE? ')" })</td>
+
+    }
+
+    @*<td><a href="/Employee/Detalis/@emp.EmployeeID" class="btn btn-info" style="  width:100%">Delails</a></td>*@
+</tr>
 
     }
 

@@ -18,9 +18,13 @@
             <th>Device Name</th>
             <th>Product Number</th>
             <th>Description</th>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <th>Disable</th>
+                <th> Update </th>
+            }
 
-            <th>Disable</th>
-            <th>Update</th>
+
             @*<th>Details </th>*@
         </tr>
     </thead>
@@ -31,16 +35,24 @@
             <td>@dev.DevName</td>
             <td>@dev.SerialNumber</td>
             <td>@dev.Description</td>
-            <td><a href="/Device/Disable/@dev.DeviceID" class="btn btn-danger" style="width:100%">Disable </a></td>
-            <td><a href="/Device/GetDev/@dev.DeviceID" class="btn btn-success" style="width:100%">Update </a></td>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <td><a href="/Device/Disable/@dev.DeviceID" class="btn btn-danger" style="width:100%">Disable </a></td>
+                <td><a href="/Device/GetDev/@dev.DeviceID" class="btn btn-success" style="width:100%">Update </a></td>
+            }
+
+
             @*<td><a href="/Device/Detalis/@dev.DeviceID" class="btn btn-info" style=" width:100%">Delails</a></td>*@
         </tr>
 
-      }
+    }
 
 </table>
-
+@if (User.IsInRole("A") || User.IsInRole("B"))
+{
 <a href="/Device/Add" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-warning">ADD </a>
+}
+
 
 
 @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
