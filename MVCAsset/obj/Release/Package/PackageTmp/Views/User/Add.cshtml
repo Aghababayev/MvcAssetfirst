@@ -1,0 +1,35 @@
+﻿@model MVCAsset.Models.Classes.User
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container-fluid ">
+    
+    <form class="form-group" method="post">
+        @Html.HiddenFor(x => x.UserID)
+
+        @Html.Label("Name")
+
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control col-md-3", @required = "", maxlength = "20" })
+        <h3 style="color: #eb2f06">@ViewBag.ms</h3>
+        <br />
+        @Html.Label("Password")
+        <br />
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control col-md-3", @required = "", maxlength = "20" })
+
+        <br />
+        @Html.Label("Permission")
+        @Html.DropDownListFor(x => x.Permission, (List<SelectListItem>)ViewBag.per, new { @class = "form-control col-md-3", required = "" })
+        <br />
+
+
+        <button class="  btn  btn-outline-success">Add</button> 
+        <a style="margin-left:1%" href="/User/Index" class="btn btn-outline-info">Back</a>
+
+
+    </form>
+
+</div>
+

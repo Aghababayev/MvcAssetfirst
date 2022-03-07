@@ -1,0 +1,45 @@
+﻿@model MVCAsset.Models.Classes.Handover
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="width:100%; " class="container-fluid">
+    <div style="width:50%;float:right">
+        <img style="width:90%;height:90%;" src="~/Images/Handover.jpg" />
+    </div>
+    @using (Html.BeginForm("Add", "Handover", FormMethod.Post))
+    {
+
+
+        @Html.Label("Name")
+
+        @Html.DropDownListFor(x => x.EmployeeID, (List<SelectListItem>)ViewBag.ns, "---Select Employee---", new { @class = "form-control col-md-4", @required = "sefsef" })
+
+        <br />
+        @Html.Label("Device")
+
+        <br />
+        @Html.DropDownListFor(x => x.DeviceID, (List<SelectListItem>)ViewBag.dn, "---Select Device---", new { @class = "form-control col-md-4", @required = "" })
+        <br />
+        @Html.Label("Serial Number")
+        <br />
+        @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control col-md-4", @required = "", maxlength = "20" })
+        <h3 style="color:red">@ViewBag.msg</h3>
+        <br />
+
+        @Html.Label("Date")
+        <br />
+        @Html.TextBoxFor(x => x.Time, new { @class = "form-control col-md-3", type = "date", @required = "" })
+        <br />
+        <br />
+
+
+
+        <button class="  btn  btn-outline-success">ADD</button>
+        <a style="margin-left:1%" href="/Handover/Index" class="btn btn-outline-info">BACK</a>
+
+    }
+</div>
+
+

@@ -1,0 +1,35 @@
+﻿@model MVCAsset.Models.Classes.User
+@{
+    ViewBag.Title = "GetUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+
+
+
+
+
+<div class="container-fluid  ">
+    @using (Html.BeginForm("Update", "User", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.UserID)
+        @Html.Label("Username")
+   
+        <br />
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control  col-md-3", required = "", maxlength = "20" });
+        <br />
+        @Html.Label("Password")
+        <br />
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control col-md-3", required = "", maxlength = "20" });
+        <br />
+        @Html.Label("Permission")
+        <br />
+        @Html.DropDownListFor(x => x.Permission, (List<SelectListItem>)ViewBag.per, "---Select Permission---", new { @class = "form-control  col-md-3", required = "" });
+
+
+        <br />
+        <button class="btn btn-success">Update</button> <a href="/User/Index" class="btn btn-info" style="margin-left:1%">Back</a>
+    }
+</div>

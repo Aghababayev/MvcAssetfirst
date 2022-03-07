@@ -1,0 +1,73 @@
+﻿@using MVCAsset.Models.Classes
+@model List<Device>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container-fluid" style="background-color: #44bd32 ">
+    <h4 style="text-align:center">DEVICES</h4>
+</div>
+<table id="tbldep" class="table table-bordered" style="table-layout: fixed">
+
+    <thead>
+        <tr style="text-align:center">
+
+            <th>Device ID</th>
+            <th>Device Name</th>
+            <th>Product Number</th>
+            <th>Description</th>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <th>Disable</th>
+                <th> Update </th>
+            }
+
+
+            @*<th>Details </th>*@
+        </tr>
+    </thead>
+    @foreach (var dev in Model)
+    {
+        <tr>
+            <td>@dev.DeviceID</td>
+            <td>@dev.DevName</td>
+            <td>@dev.SerialNumber</td>
+            <td>@dev.Description</td>
+            @if (User.IsInRole("A") || User.IsInRole("B"))
+            {
+                <td><a href="/Device/Disable/@dev.DeviceID" class="btn btn-danger" style="width:100%">Disable </a></td>
+                <td><a href="/Device/GetDev/@dev.DeviceID" class="btn btn-success" style="width:100%">Update </a></td>
+            }
+
+
+            @*<td><a href="/Device/Detalis/@dev.DeviceID" class="btn btn-info" style=" width:100%">Delails</a></td>*@
+        </tr>
+
+    }
+
+</table>
+@if (User.IsInRole("A") || User.IsInRole("B"))
+{
+<a href="/Device/Add" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-warning">ADD </a>
+}
+
+
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<link href="~/Content/DataTables/css/dataTables.material.css" rel="stylesheet" />
+<script>
+    $('#tbldep').dataTable();
+</script>

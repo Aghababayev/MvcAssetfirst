@@ -1,0 +1,47 @@
+﻿@model MVCAsset.Models.Classes.Device
+@{
+    ViewBag.Title = "GetDep";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="width:100%; " class="container-fluid">
+    <div style="width: 60%; float: right;">
+        <img style="width:95%;height:80%;" src="~/Images/devupdate.jpg" />
+        
+    </div>
+    @using (Html.BeginForm("Update", "Device", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.DeviceID);
+        <br />
+        @Html.Label("Device Name");
+        <br />
+        @Html.TextBoxFor(x => x.DevName, new { @class = "form-control col-md-4", required = "", maxlength = "30" });
+        <h3 style="color: #eb2f06">@ViewBag.ms</h3>
+        <br />
+        @Html.Label("Product Number");
+        <br />
+        @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control col-md-4", onkeyup = "Inputupper(this)", required = "", maxlength = "15" });
+        <h3 style="color: #eb2f06">@ViewBag.msser</h3>
+        <br />
+        @Html.Label("Description");
+        <br />
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control col-md-4", maxlength = "300" });
+
+
+        <br />
+
+        <button id="btnup" class="btn btn-success">UPDATE</button>
+        <a style="margin-left:1%" href="/Device/Index" class="btn btn-info">BACK</a>
+    }
+</div>
+
+<br />
+<script>
+    function Inputupper(obj) {
+        if ((obj.value != "")) {
+            obj.value = obj.value.toUpperCase();
+        }  
+            
+    }
+
+</script>

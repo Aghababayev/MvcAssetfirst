@@ -10,7 +10,7 @@ namespace MVCAsset.Controllers
     public class DisabledUserController : Controller
     {
         // GET: DisabledUser
-        Context c = new Context();
+        private readonly Context c = new Context();
         public ActionResult Index()
         {
             var val = c.Employees.Where(x => x.EmpExsist == false && x.EmployeeID!=0).ToList();

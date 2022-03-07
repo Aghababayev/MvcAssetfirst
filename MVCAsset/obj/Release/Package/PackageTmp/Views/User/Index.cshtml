@@ -1,0 +1,46 @@
+﻿@using MVCAsset.Models.Classes
+@model List<User>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container-fluid" style="background-color: #F79F1F ">
+    <h4 style="text-align:center">USER</h4>
+</div>
+<table id="tbldep" class="table table-bordered" style="table-layout: fixed">
+
+    <thead>
+        <tr style="text-align:center">
+
+            <th>User Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Permission</th>
+   
+            <th>Delete</th> 
+            <th>Update</th>
+        </tr>
+    </thead>
+    @foreach (var usr in Model)
+    {
+        <tr>
+            <td>@usr.UserID</td>
+            <td>@usr.Username</td>
+            <td>@usr.Password</td>
+            <td>@usr.Permission</td>
+            @*<td>@hndo.Description</td>*@
+           
+            <td><a href="/User/Delete/@usr.UserID" class="btn btn-danger" style="width:100%">Delete </a></td>
+            <td><a href="/User/GetUser/@usr.UserID" class="btn btn-success" style="width:100%">Update </a></td>
+                
+        </tr>
+
+    }
+
+</table>
+<br />
+<a href="/User/Add" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-warning">ADD </a>
+<a href="/Employee/index" style="margin-top:5px; width:25%" class="align-self-lg-center   btn btn-outline-info">BACK </a>
+<br />

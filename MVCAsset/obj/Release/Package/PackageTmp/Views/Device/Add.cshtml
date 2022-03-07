@@ -1,0 +1,45 @@
+﻿@model MVCAsset.Models.Classes.Device
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="width:100%; " class="container-fluid">
+<div style="width:50%;float:right">
+    <img style="width:90%;height:90%;" src="~/Images/devicesadd.jpg" />
+</div>
+<form class="form-group" method="post">
+    @Html.HiddenFor(x => x.DeviceID)
+
+    @Html.Label("Device Name")
+
+    @Html.TextBoxFor(x => x.DevName, new { @class = "form-control col-md-4", @required = "", maxlength = "30" })
+    <h3 style="color: #eb2f06">@ViewBag.ms</h3>
+    <br />
+    @Html.Label("Product Number")
+    <br />
+    @Html.TextBoxFor(x => x.SerialNumber, new { @class = "form-control col-md-4", onkeyup = "InputToUpper(this);", @required = "", maxlength = "15" })
+    <h3 style="color: #eb2f06">@ViewBag.msser</h3>
+    <br />
+    @Html.Label("Description")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control col-md-4", @required = "", maxlength = "300" })
+
+
+    <br />
+
+
+
+
+    <button class="  btn  btn-outline-success">ADD</button>
+    <a style="margin-left:1%" href="/Device/Index" class="btn btn-outline-info">BACK</a>
+
+</form>
+</div>
+
+<script>
+    function InputToUpper(obj) {
+        if (obj.value != "") {
+            obj.value = obj.value.toUpperCase();
+        }
+    }
+</script>

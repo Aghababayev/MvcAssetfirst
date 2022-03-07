@@ -1,0 +1,48 @@
+﻿@using MVCAsset.Models.Classes
+@model List<Employee>
+@{
+    ViewBag.Title = "Detalis";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="container-fluid" style="background-color: #0be881">
+    <h4 style="text-align:center">@ViewBag.dpn Department Employees: @ViewBag.cnt</h4>
+</div>
+<table id="tbldep" class="table table-bordered" style="table-layout:fixed; text-align:center">
+
+    <thead>
+        <tr style="text-align:center">
+
+            <th>Name</th>
+            <th>Surname</th>
+            <th>ASL</th>
+            <th>Position</th>
+
+
+        </tr>
+    </thead>
+    @foreach (var emp in Model)
+    {
+        <tr>
+            <td>@emp.Name</td>
+            <td>@emp.Surname</td>
+            <td>@emp.ASL</td>
+            <td>@emp.Position</td>
+
+        </tr>
+
+    }
+</table>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<link href="~/Content/DataTables/css/dataTables.material.css" rel="stylesheet" />
+<script>
+    $('#tbldep').dataTable();
+</script>
